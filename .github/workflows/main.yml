@@ -34,3 +34,10 @@ jobs:
         run: |
           echo Creatingg docker image,
           docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: myDocker/repository
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
